@@ -26,6 +26,8 @@ vnoremap <Space> zf
 
 nnoremap <C-c> <Esc>:close<CR>
 inoremap <C-s> <Esc>:w<CR>
+nnoremap <Leader>< :bp<CR>
+nnoremap <Leader>> :bn<CR>
 
 " ---------------- Highlight 80th column -------------------------------------
 if exists('+colorcolumn')
@@ -45,3 +47,4 @@ nnoremap <silent> <F2> :Goyo<CR>
 
 " ------------------------- :Jsonfmt to format .json -------------------------
 com! Jsonfmt %!python -m json.tool
+au FileType json Jsonfmt
