@@ -6,4 +6,6 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'AlessandroYorba/Alduin'
 
+Plug 'github/copilot.vim'
+
 call plug#end()
