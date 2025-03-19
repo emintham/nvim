@@ -46,5 +46,15 @@ autocmd BufWritePre * %s/\s\+$//e
 nnoremap <silent> <F2> :Goyo<CR>
 
 " ------------------------- :Jsonfmt to format .json -------------------------
-com! Jsonfmt %!python -m json.tool
+function! SafeJsonFormat()
+  " Check if file contains merge conflict markers
+  if search('^\(<<<<<<<\|=======\|>>>>>>>\)', 'n')
+    echo "Merge conflicts detected - skipping JSON formatting"
+  else
+    %!python -m json.tool
+  endif
+endfunction
+
+com! Jsonfmt call SafeJsonFormat()
 au FileType json Jsonfmt
+
